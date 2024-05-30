@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { User } from "../app/models/user.js";
 
+
 const router = Router();
 
 router.post("/login", async (request, response) => {
@@ -25,6 +26,11 @@ router.post("/login", async (request, response) => {
 });
 
 router.post("/logout", async (request, response) => {
+    console.log("Logging out");
+    console.log(request.session);
+    console.log(request.session.userId);
+
+
     if (request.session.userId) {
         delete request.session.userId;
         response.send({ status: "Success" });
